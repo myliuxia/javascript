@@ -1,0 +1,14 @@
+/**
+项目统一格式化，禁止使用prettier，beautify格式化代码
+*/
+{
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "eslint.format.enable": false,
+  "eslint.options": {
+    "configFile": "./.eslintrc.js"
+  }
+}

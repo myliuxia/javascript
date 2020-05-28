@@ -94,7 +94,7 @@ unshift: 将参数添加到原数组开头，并返回【新数组长度】
 indexOf()：接收一或两个参数：要查找的项和（可选的）表示查找起点位置的索引。默认从数组的开头（位置 0）开始向后查找。
 lastIndexOf：接收一或两个参数：要查找的项和（可选的）表示查找起点位置的索引。默认从数组的末尾开始向前查找。
 
-### 9、map() (原数组没变)
+### 9、map() (原数组不变)
 “映射”，对数组中的每一项运行给定函数，返回每次函数调用的结果组成的数组。
 
 ``` javascript
@@ -105,11 +105,68 @@ var arr2 = arr.map((item) => {
 console.log(arr2)    // [1, 4, 9, 16, 25]
 ```
 
-### 10、filter()(原数组没变)
+### 10、filter()(原数组不变)
 
 “过滤”功能，数组中的每一项运行给定函数，返回满足过滤条件组成的数组
 
 ``` javascript
-var arr = [1, 2, 3, 4, 5]
-var _arr = arr.filter((item) => { return item >= 3 })         // [3, 4, 5]
+  var arr = [1, 2, 3, 4, 5]
+  var _arr = arr.filter((item) => { return item >= 3 })         // [3, 4, 5]
+```
+
+### 11、reverse()（原数组改变）
+用于颠倒数组中元素的顺序。
+
+``` javascript
+  var arr = [1, 2, 3]
+  arr.reverse()       // [3, 2, 1]
+```
+
+### 12、some() 和 every()
+some(): 测试数组中的某些元素是否通过了指定函数的测试。(一真即真)
+``` javascript
+  var arr = [1, 2, 3]
+  var flag = arr.some((item)=>{
+    return item>=3
+  })       // true
+```
+
+every(): 测试数组的所有元素是否都通过了指定函数的测试。(一假即假)
+``` javascript
+  var arr = [1, 2, 3]
+  var flag = arr.every((item)=>{
+    return item>=3
+  })       // false
+```
+
+### 13、数组扁平化
+
+（1）map
+``` javascript
+  function flatten(arr) {
+    var res = []
+    arr.map(item => {
+      if(Array.isArray(item)) {
+        res = res.concat(flatten(item))
+      } else {
+        res.push(item)
+      }
+    })
+    return res
+  }
+```
+（2）[].concat
+es6的扩展运算符能将二维数组变为一维
+
+``` javascript
+  [].concat(...[1, 2, 3, [4, 5]])         // [1, 2, 3, 4, 5]
+```
+根据这个结果我们可以做一个遍历，若arr中含有数组则使用一次扩展运算符，直至没有为止。
+``` javascript
+  function flatten(arr) {
+    while(arr.some(item => Array.isArray(item))) {
+      arr = [].concat(...arr)
+    }
+    return arr
+  }       // [1, 2, 3, 4, 5]
 ```

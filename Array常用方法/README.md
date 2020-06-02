@@ -122,7 +122,7 @@ console.log(arr2)    // [1, 4, 9, 16, 25]
   arr.reverse()       // [3, 2, 1]
 ```
 
-### 12、some() 和 every()
+### 12、some() 和 every() （ES6）
 some(): 测试数组中的某些元素是否通过了指定函数的测试。(一真即真)
 ``` javascript
   var arr = [1, 2, 3]
@@ -155,7 +155,7 @@ every(): 测试数组的所有元素是否都通过了指定函数的测试。(�
     return res
   }
 ```
-（2）[].concat
+（2）[].concat 
 es6的扩展运算符能将二维数组变为一维
 
 ``` javascript
@@ -169,4 +169,40 @@ es6的扩展运算符能将二维数组变为一维
     }
     return arr
   }       // [1, 2, 3, 4, 5]
+```
+(3) flat
+es6提供了一个新方法 flat(depth)，参数depth，代表展开嵌套数组的深度，默认是1
+``` javascript
+let arr = [1, [2, 3, [4, [5]]]];
+arr.flat(3); // [1,2,3,4,5]
+```
+
+### 14、from() （ES6）
+
+将类数组转换为数组
+``` javascript
+let array = {
+    0: 'name', 
+    1: 'age',
+    2: 'sex',
+    3: ['user1','user2','user3'],
+    'length': 4
+}
+let arr = Array.from(array)
+console.log(arr) // ['name','age','sex',['user1','user2','user3']]
+```
+将Set解构的数据转换为数组
+``` javascript
+let arr = [1,2,3,4,5,6,7,8,9]
+let set = new Set(arr)
+console.log(Array.from(set))  // [1,2,3,4,5,6,7,8,9]
+console.log(Array.from(set, item => item + 1)) // [2,3,4,5,6,7,8,9,10]
+```
+
+### 15、reduce()
+计算数组元素相加后的总和
+``` javascript
+var arr = [65, 44, 12, 4];
+var total = arr.reduce((accumulator,currentValue) => accumulator + currentValue)
+console.log(total) // 125
 ```

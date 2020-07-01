@@ -207,3 +207,35 @@ var arr = [65, 44, 12, 4];
 var total = arr.reduce((accumulator,currentValue) => accumulator + currentValue)
 console.log(total) // 125
 ```
+
+
+### 15、find() 和 findIndex() (ES6)
+Array.find()：找到满足条件的第一个元素返回，如果未找到，则返回undefined。
+
+``` javascript
+const arr1 = [1, 2, 3, 4, 5]
+var ret1 = arr1.find((value, index, arr) => {
+  return value > 3
+})
+
+var ret2 = arr1.find((value, index, arr) => {
+  return value > 6
+})
+console.log(ret1) // 4
+console.log(ret2) // undefined
+```
+
+Array.findIndex()：找到满足条件的第一个元素，返回其位置，如果未找到，则返回-1
+
+``` javascript
+const arr1 = [1, 2, 3, 4, 5]
+var ret3 = arr1.findIndex((value, index, arr) => {
+  return value > 3
+})
+
+var ret4 = arr1.findIndex((value, index, arr) => {
+  return value > 6
+})
+console.log(ret3) // 3
+console.log(ret4) // -1
+```

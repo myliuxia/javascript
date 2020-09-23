@@ -34,7 +34,7 @@ function curry(fn, args) {
   let _this = this
   let _args = args || []
   return function () {
-    // 将参数转化未数组
+    // 将参数转化为数组
     let args = Array.prototype.slice.apply(arguments)
     // 将参数记录args中
     args = Array.prototype.concat.call(_args, args)

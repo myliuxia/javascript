@@ -38,22 +38,22 @@ unshift: 将参数添加到原数组开头，并返回【新数组长度】
 
 ``` javascript
   var list = [1, 2, 3, 4, 5, 6, 7], target = 4
-  list.map(item => item).sort((a, b) => {
+  list.map(item => item.sort((a, b) => {
     if(a === target && b !== target){
       return -1
     } else {
       return 1
     }
-  })
+  }))
   // [4, 1, 2, 3, 5, 6, 7]
   
-  list.map(item => item).sort((a, b) => {
+  list.map(item => item.sort((a, b) => {
     if(a !== target && b === target){
       return -1
     } else {
       return 1
     }
-  })
+  }))
   // [1, 2, 3, 5, 6, 7, 4]
 ```
 
